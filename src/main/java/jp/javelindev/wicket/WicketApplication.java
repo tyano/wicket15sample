@@ -30,6 +30,6 @@ public class WicketApplication extends WebApplication
         getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
         getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
         
-        mountPage("/home", getHomePage());
+        mountPage("/home/${name}/address/${address}", getHomePage());
     }
 }

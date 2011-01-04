@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Tsutomu YANO.
+ * Copyright 2011 t_yano.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,22 @@
  * limitations under the License.
  */
 
-package jp.javelindev.wicket;
-
-import org.apache.wicket.Component;
+package jp.javelindev.wicket.payload;
 
 /**
  *
- * @author Tsutomu YANO
+ * @author t_yano
  */
-public class RemoveRequest implements EventPayload<Component> {
-    Component eventSource;
+public abstract class AbstractEventPayload<T> implements EventPayload<T> {
 
-    public RemoveRequest(Component eventSource) {
-        this.eventSource = eventSource;
+    private T source;
+
+    public AbstractEventPayload(T source) {
+        this.source = source;
     }
 
     @Override
-    public Component getEventSource() {
-        return eventSource;
+    public T getEventSource() {
+        return source;
     }
 }

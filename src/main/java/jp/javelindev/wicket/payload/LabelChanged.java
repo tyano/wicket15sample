@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Tsutomu YANO.
+ * Copyright 2011 t_yano.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,16 @@
  * limitations under the License.
  */
 
-package jp.javelindev.wicket;
+package jp.javelindev.wicket.payload;
 
 import org.apache.wicket.Component;
 
 /**
  *
- * @author Tsutomu YANO
+ * @author t_yano
  */
-public interface ChangePayload<T> extends EventPayload<T> {
-    void processChangeEvent(Component target, ChangeTiming timing);
+public class LabelChanged extends AbstractEventPayload<Component> {
+    public LabelChanged(Component source) {
+        super(source);
+    }
 }

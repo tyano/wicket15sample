@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package jp.javelindev.wicket;
+package jp.javelindev.wicket.payload;
 
 import org.apache.wicket.Component;
 
@@ -22,8 +22,15 @@ import org.apache.wicket.Component;
  *
  * @author Tsutomu YANO
  */
-public class LabelChange extends AbstractChange {
-    public LabelChange(Component source, ChangeTiming timing) {
-        super(source, timing);
+public class RemoveRequest extends AbstractEventPayload<Component> {
+    private boolean remove;
+    
+    public RemoveRequest(Component source, boolean remove) {
+        super(source);
+        this.remove = remove;
+    }
+
+    public boolean isRemove() {
+        return remove;
     }
 }

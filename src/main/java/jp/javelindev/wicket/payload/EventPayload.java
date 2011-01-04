@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package jp.javelindev.wicket;
+package jp.javelindev.wicket.payload;
 
 /**
  * @param <T> type of event source.
