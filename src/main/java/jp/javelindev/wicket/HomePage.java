@@ -8,6 +8,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +21,7 @@ public class HomePage extends WebPage {
     private static final long serialVersionUID = 1L;
     private static final Logger LOGGER = LoggerFactory.getLogger(HomePage.class);
     
-    private TargetBox targetButton;
+    private TargetBox targetBox;
     
     public HomePage(final PageParameters parameters) {
 
@@ -28,13 +30,20 @@ public class HomePage extends WebPage {
         
         add(new Label("message", "name: " + name + " address: " + address));
 
-        targetButton = new TargetBox("targetButton");
-        add(targetButton.setOutputMarkupPlaceholderTag(true));
+        targetBox = new TargetBox("targetBox");
+        add(targetBox.setOutputMarkupPlaceholderTag(true));
+        
+        IModel<Boolean> displayStatusModel = new AbstractReadOnlyModel<Boolean>() {
+            @Override
+            public Boolean getObject() {
+                return targetBox.isVisibilityAllowed();
+            }
+        };
 
-        Link<Void> removeButton = new RemoveLink("removeButton");
+        Link<Void> removeButton = new RemoveLink("removeButton", displayStatusModel);
         add(removeButton);
-
-        Label buttonLabel = new RemoveLabel("buttonLabel", new PropertyModel<Component>(this, "targetButton"));
+        
+        Label buttonLabel = new RemoveLabel("buttonLabel");
         removeButton.add(buttonLabel);
     }
 }

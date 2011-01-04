@@ -13,7 +13,8 @@ public class TargetBox extends WebMarkupContainer {
     @Override
     public void onEvent(IEvent<?> event) {
         if (event.getPayload() instanceof RemoveRequest) {
-            setVisibilityAllowed(!isVisibilityAllowed());
+            RemoveRequest request = (RemoveRequest)event.getPayload();
+            setVisibilityAllowed(!request.isRemove());
         }
     }
 }
