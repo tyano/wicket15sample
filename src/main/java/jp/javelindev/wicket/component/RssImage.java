@@ -38,24 +38,25 @@ public class RssImage extends AjaxLink<Void> implements IImageSource {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RssImage.class);
     private String source;
-    private final Object sourceLock = new Object();
     private final String NO_IMAGE_URL = urlFor(getApplication().getSharedResources().get(RssImage.class, "noImage.jpg", getWebRequest().getLocale(), null, null, false), null).toString();
     private boolean selected = false;
-    
+
     public RssImage(String id) {
         super(id);
         setOutputMarkupId(true);
-        add(new AttributeModifier("src", new AbstractReadOnlyModel<String>()    {
+        add(new AttributeModifier("src", new AbstractReadOnlyModel<String>()      {
+
             @Override
             public String getObject() {
                 return getImageSource();
             }
         }));
 
-        add(new AttributeAppender("class", new AbstractReadOnlyModel<String>() {
+        add(new AttributeAppender("class", new AbstractReadOnlyModel<String>()   {
+
             @Override
             public String getObject() {
-                if(selected) {
+                if (selected) {
                     return "selected";
                 } else {
                     return "not-selected";
@@ -66,17 +67,15 @@ public class RssImage extends AjaxLink<Void> implements IImageSource {
 
     @Override
     public String getImageSource() {
-        synchronized (sourceLock) {
-            if (source == null) {
-                WicketApplication application = WicketApplication.get();
-                try {
-                    HaseriRss rss = application.getRssSource();
-                    SyndEntry entry = rss.getRandomEntry();
-                    source = ((SyndEnclosure) entry.getEnclosures().get(0)).getUrl();
-                } catch (HaseriRssException ex) {
-                    LOGGER.error("can not retrieve a image.", ex);
-                    source = NO_IMAGE_URL;
-                }
+        if (source == null) {
+            WicketApplication application = WicketApplication.get();
+            try {
+                HaseriRss rss = application.getRssSource();
+                SyndEntry entry = rss.getRandomEntry();
+                source = ((SyndEnclosure) entry.getEnclosures().get(0)).getUrl();
+            } catch (HaseriRssException ex) {
+                LOGGER.error("can not retrieve a image.", ex);
+                source = NO_IMAGE_URL;
             }
         }
         return source;
@@ -86,11 +85,9 @@ public class RssImage extends AjaxLink<Void> implements IImageSource {
     public void onEvent(IEvent<?> event) {
         super.onEvent(event);
         if (event.getPayload() instanceof ImageRefresh) {
-            if(selected) {
-                synchronized(sourceLock) {
-                    source = null;
-                    selected = false;
-                }
+            if (selected) {
+                source = null;
+                selected = false;
                 ImageRefresh<?> imageRefreshPayload = (ImageRefresh<?>) event.getPayload();
                 imageRefreshPayload.addComponent(this);
             }
