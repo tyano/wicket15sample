@@ -1,5 +1,6 @@
 package jp.javelindev.wicket;
 
+import jp.javelindev.wicket.page.HomePage;
 import junit.framework.TestCase;
 import org.apache.wicket.util.tester.WicketTester;
 

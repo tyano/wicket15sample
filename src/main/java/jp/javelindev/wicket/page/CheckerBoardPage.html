@@ -1,0 +1,37 @@
+<!--
+Copyright 2011 Tsutomu YANO.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!doctype html>
+<html>
+    <head>
+        <title>Checker Board</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <wicket:link>
+            <link rel='stylesheet' id='978grid-css'  href='978grid.css' type='text/css' media='all' />
+        </wicket:link>
+    </head>
+    <body>
+        <div class="container clearfix">
+            <div class="header" style="text-align: center;">CHECKER BOARD</div>
+            <div wicket:id="gridrow" class="container">
+                <img src="#" class="grid2h grid2v"  wicket:id="rssImage" />
+                <wicket:remove><!-- ここにグリッドが残り５つ、計６つできる --></wicket:remove>
+            </div>
+            <div class="footer">
+                <button wicket:id="refreshLink"><wicket:message key="buttonName">refresh</wicket:message></button>
+            </div>
+        </div>
+    </body>
+</html>

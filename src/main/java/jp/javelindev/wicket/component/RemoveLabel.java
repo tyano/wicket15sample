@@ -9,13 +9,18 @@ public class RemoveLabel extends Label {
 
     public RemoveLabel(String id) {
         super(id);
+    }
+
+    @Override
+    protected void onInitialize() {
+        super.onInitialize();
         setDefaultModel(Model.of(getString("removeLabel")));
     }
 
     @Override
     public void onEvent(IEvent<?> event) {
         if (event.getPayload() instanceof RemoveRequest) {
-            RemoveRequest request = (RemoveRequest)event.getPayload();
+            RemoveRequest request = (RemoveRequest) event.getPayload();
             String newLabel = request.isRemove() ? getString("displayLabel") : getString("removeLabel");
             setDefaultModelObject(newLabel);
         }

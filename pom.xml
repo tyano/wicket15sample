@@ -72,6 +72,12 @@
             <version>${jetty.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>net.java.dev.rome</groupId>
+            <artifactId>rome-fetcher</artifactId>
+            <version>1.0.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
     <build>
         <resources>

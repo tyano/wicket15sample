@@ -1,16 +1,14 @@
-package jp.javelindev.wicket;
+package jp.javelindev.wicket.page;
 
 import jp.javelindev.wicket.component.TargetBox;
 import jp.javelindev.wicket.component.RemoveLabel;
 import jp.javelindev.wicket.component.RemoveLink;
-import org.apache.wicket.Component;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.AbstractReadOnlyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
