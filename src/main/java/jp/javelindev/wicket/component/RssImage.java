@@ -45,7 +45,6 @@ public class RssImage extends AjaxLink<Void> implements IImageSource {
         super(id);
         setOutputMarkupId(true);
         add(new AttributeModifier("src", new AbstractReadOnlyModel<String>()      {
-
             @Override
             public String getObject() {
                 return getImageSource();
@@ -53,14 +52,9 @@ public class RssImage extends AjaxLink<Void> implements IImageSource {
         }));
 
         add(new AttributeAppender("class", new AbstractReadOnlyModel<String>()   {
-
             @Override
             public String getObject() {
-                if (selected) {
-                    return "selected";
-                } else {
-                    return "not-selected";
-                }
+                return selected ? "selected" : "not-selected";
             }
         }, " "));
     }
