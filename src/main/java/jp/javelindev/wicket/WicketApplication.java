@@ -2,8 +2,13 @@ package jp.javelindev.wicket;
 
 import jp.javelindev.wicket.page.CheckerBoardPage;
 import jp.javelindev.wicket.page.HomePage;
+import jp.javelindev.wicket.resource.SimpleTextResource;
+import jp.javelindev.wicket.resource.SimpleTextResourceReference;
 import org.apache.wicket.Application;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.mapper.ResourceMapper;
+import org.apache.wicket.request.resource.ResourceReference;
+import org.apache.wicket.request.resource.SharedResourceReference;
 
 /**
  * Application object for your web application. If you want to run this application without deploying, run the Start class.
@@ -39,6 +44,9 @@ public class WicketApplication extends WebApplication implements Rss
         mountPage("/home/${name}/address/${address}", getHomePage());
         mountPage("/checkerboard", CheckerBoardPage.class);
         
+        getSharedResources().add("simpletext", SimpleTextResource.create());
+        ResourceReference reference = new SharedResourceReference("simpletext");
+        mountSharedResource("/simpletext", reference);
         rssSource = new HaseriRss();
     }
 
