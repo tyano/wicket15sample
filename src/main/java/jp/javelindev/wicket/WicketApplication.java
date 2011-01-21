@@ -1,12 +1,10 @@
 package jp.javelindev.wicket;
 
 import jp.javelindev.wicket.page.CheckerBoardPage;
-import jp.javelindev.wicket.page.HomePage;
 import jp.javelindev.wicket.resource.SimpleTextResource;
-import jp.javelindev.wicket.resource.SimpleTextResourceReference;
 import org.apache.wicket.Application;
+import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
-import org.apache.wicket.request.mapper.ResourceMapper;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.request.resource.SharedResourceReference;
 
@@ -30,9 +28,10 @@ public class WicketApplication extends WebApplication implements Rss
 	/**
 	 * @see org.apache.wicket.Application#getHomePage()
 	 */
-	public Class<HomePage> getHomePage()
+    @Override
+	public Class<? extends Page> getHomePage()
 	{
-		return HomePage.class;
+		return CheckerBoardPage.class;
 	}
 
     @Override
