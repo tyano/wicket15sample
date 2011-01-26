@@ -37,12 +37,12 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.4.2</version>
+            <version>1.6.1</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.14</version>
+            <version>1.2.16</version>
         </dependency>
 
 		<!--  JUNIT DEPENDENCY FOR TESTING -->
@@ -76,6 +76,18 @@
             <groupId>net.java.dev.rome</groupId>
             <artifactId>rome-fetcher</artifactId>
             <version>1.0.0</version>
+            <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.6.1</version>
             <type>jar</type>
         </dependency>
     </dependencies>
@@ -143,7 +155,7 @@
         </plugins>
     </build>
     <properties>
-        <wicket.version>1.5-M3</wicket.version>
+        <wicket.version>1.5-RC1</wicket.version>
         <jetty.version>6.1.4</jetty.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
      <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
