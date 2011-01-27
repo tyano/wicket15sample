@@ -1,6 +1,8 @@
 package jp.javelindev.wicket;
 
 import jp.javelindev.wicket.page.CheckerBoardPage;
+import jp.javelindev.wicket.page.HomePage;
+import jp.javelindev.wicket.page.Index;
 import jp.javelindev.wicket.resource.SimpleTextResource;
 import org.apache.wicket.Application;
 import org.apache.wicket.Page;
@@ -31,7 +33,7 @@ public class WicketApplication extends WebApplication implements Rss
     @Override
 	public Class<? extends Page> getHomePage()
 	{
-		return CheckerBoardPage.class;
+		return Index.class;
 	}
 
     @Override
@@ -40,7 +42,8 @@ public class WicketApplication extends WebApplication implements Rss
         getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
         getRequestCycleSettings().setResponseRequestEncoding("UTF-8");
         
-        mountPage("/home/${name}/address/${address}", getHomePage());
+        mountPage("/index", Index.class);
+        mountPage("/home/${name}/address/${address}", HomePage.class);
         mountPage("/checkerboard", CheckerBoardPage.class);
         
         getSharedResources().add("simpletext", SimpleTextResource.create());
