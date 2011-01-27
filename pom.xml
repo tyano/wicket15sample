@@ -162,6 +162,6 @@
         <wicket.version>1.5-RC1</wicket.version>
         <jetty.version>6.1.4</jetty.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-     <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
+     <netbeans.hint.deploy.server>gfv3ee6wc</netbeans.hint.deploy.server>
     </properties>
 </project>
