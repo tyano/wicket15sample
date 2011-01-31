@@ -34,5 +34,5 @@
 /* IE7 */
 *:first-child+html .clearfix {zoom: 1;}
 
-.selected { border: activeborder solid 4px; }
+.now-selected { border: activeborder solid 4px; }
 .not-selected { border: inactiveborder solid 4px;; }

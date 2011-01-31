@@ -23,15 +23,17 @@ limitations under the License.
         </wicket:link>
     </head>
     <body>
-        <div class="container clearfix">
-            <div class="header" style="text-align: center;">CHECKER BOARD</div>
+        <div class="header" style="text-align: center;">CHECKER BOARD</div>
+        <div wicket:id="feedback"></div>
+        <form name="submitForm" wicket:id="submitForm" class="container clearfix">
             <div wicket:id="gridrow" class="container">
-                <img src="#" class="grid2h grid2v"  wicket:id="rssImage" />
+                <div wicket:id="rssImage"><img src="#" /><input type="hidden" name="hidden" /></div>
                 <wicket:remove><!-- ここにグリッドが残り５つ、計６つできる --></wicket:remove>
             </div>
-            <div class="footer">
-                <button wicket:id="refreshLink"><wicket:message key="buttonName">refresh</wicket:message></button>
-            </div>
-        </div>
+
+        </form>
+        <div class="footer">
+            <button wicket:id="refresh"><wicket:message key="buttonName" /></button>
+        </div>    
     </body>
 </html>
